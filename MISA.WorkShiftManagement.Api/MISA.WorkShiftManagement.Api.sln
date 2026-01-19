@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.WorkShiftManagement.Api", "MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Api.csproj", "{6BEDCF13-35BA-4707-B733-40D1FE44D2A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.WorkShiftManagement.Core", "MISA.WorkShiftManagement.Core\MISA.WorkShiftManagement.Core.csproj", "{5F183A41-A1C1-4E49-9156-998BE51B6DC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MISA.WorkShiftManagement.Infrastructure", "MISA.WorkShiftManagement.Infrastructure\MISA.WorkShiftManagement.Infrastructure.csproj", "{9EA8B6AF-BEC5-443D-8FF6-D9E3AF4B241A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BEDCF13-35BA-4707-B733-40D1FE44D2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BEDCF13-35BA-4707-B733-40D1FE44D2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BEDCF13-35BA-4707-B733-40D1FE44D2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BEDCF13-35BA-4707-B733-40D1FE44D2A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F183A41-A1C1-4E49-9156-998BE51B6DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F183A41-A1C1-4E49-9156-998BE51B6DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F183A41-A1C1-4E49-9156-998BE51B6DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F183A41-A1C1-4E49-9156-998BE51B6DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EA8B6AF-BEC5-443D-8FF6-D9E3AF4B241A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EA8B6AF-BEC5-443D-8FF6-D9E3AF4B241A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EA8B6AF-BEC5-443D-8FF6-D9E3AF4B241A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EA8B6AF-BEC5-443D-8FF6-D9E3AF4B241A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B6FC389-D852-4F7E-B481-520B9F8B3A6F}
+	EndGlobalSection
+EndGlobal

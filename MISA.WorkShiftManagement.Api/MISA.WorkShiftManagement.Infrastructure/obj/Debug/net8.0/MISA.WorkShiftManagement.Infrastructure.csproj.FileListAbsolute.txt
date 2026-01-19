@@ -1,0 +1,15 @@
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\bin\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.deps.json
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\bin\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.dll
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\bin\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.pdb
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\bin\Debug\net8.0\MISA.WorkShiftManagement.Core.dll
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\bin\Debug\net8.0\MISA.WorkShiftManagement.Core.pdb
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.AssemblyInfo.cs
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\MISA.Wor.57829E24.Up2Date
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.dll
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\refint\MISA.WorkShiftManagement.Infrastructure.dll
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\MISA.WorkShiftManagement.Infrastructure.pdb
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Infrastructure\obj\Debug\net8.0\ref\MISA.WorkShiftManagement.Infrastructure.dll

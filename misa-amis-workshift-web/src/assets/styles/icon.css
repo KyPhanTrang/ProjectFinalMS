@@ -1,0 +1,237 @@
+/* css/styles/icon.css */
+
+/* icon mask */
+.icon--mask {
+  mask-image: url(@/assets/icons/icon.svg);
+  mask-repeat: no-repeat;
+  background-color: rgb(75, 85, 99);
+  width: 20px;
+  height: 20px;
+}
+
+/* icon image */
+.icon--image {
+  background-image: url('@/assets/icons/icon.svg');
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 32px;
+  height: 34px;
+}
+
+/* Icon 24 */
+.icon--24 {
+  width: 24px;
+  height: 24px;
+}
+
+/* Header Left */
+.icon--switch-app {
+  mask-position: 0px -35px;
+  width: 24px;
+  height: 24px;
+  background-color: rgb(75, 85, 99);
+}
+
+.icon--logo-item {
+  background-image: url('@/assets/icons/logo.svg');
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* Header Right */
+.icon--down-small {
+  mask-position: -32px 0px;
+  width: 16px;
+  height: 16px;
+}
+.icon--download-status {
+  mask-position: -744px -36px;
+  height: 24px;
+  width: 24px;
+}
+.icon--package {
+  background: url('@/assets/icons/package.svg') no-repeat;
+}
+.icon--amis-invite {
+  background: url('@/assets/icons/AMIS_InviteBox.svg') no-repeat;
+  background-position: 4px 4px;
+  width: 32px;
+  height: 32px;
+}
+.icon--bell {
+  mask-position: -24px -36px;
+}
+.icon--question-circle {
+  mask-position: -48px -36px;
+}
+.icon--dots-circle {
+  mask-image: url('@/assets/icons/icon2.svg');
+  mask-position: -8px -428px;
+  mask-repeat: no-repeat;
+  background-color: rgb(75, 85, 99);
+}
+.icon--knowledge {
+  background-image: url(@/assets/icons/MISA_Knowledge.svg);
+  background-repeat: no-repeat;
+  background-position: 4px 4px;
+  width: 32px;
+  height: 32px;
+}
+
+/* Icon sidebar */
+.icon--sidebar {
+  mask-image: url(@/assets/icons/icon_sidebar.svg);
+  width: 20px;
+  height: 20px;
+  background-color: #9ca3af;
+}
+
+.icon--dropdown {
+  mask-image: url(@/assets/icons/icon.svg);
+  mask-position: -200px -16px;
+}
+
+.child-icon {
+  mask-position: -58px -67px;
+  background-color: #111827;
+}
+
+.icon--dashboard {
+  mask-position: -6px -7px;
+}
+
+.icon--order {
+  mask-position: -344px -86px;
+}
+
+.icon--plan {
+  mask-position: -32px -7px;
+}
+
+.icon--coordinate {
+  mask-position: -57px -7px;
+}
+
+.icon--quality-control {
+  mask-position: -110px -6px;
+}
+
+.icon--material-factory {
+  mask-position: -84px -6px;
+}
+
+.icon--work-order {
+  mask-position: -318px -6px;
+}
+
+.icon--file-search {
+  mask-position: -136px -86px;
+}
+
+.icon--production-report {
+  mask-position: -214px -7px;
+}
+
+.icon--product-material {
+  mask-position: -136px -6px;
+}
+
+.icon--process {
+  mask-position: -162px -6px;
+}
+
+.icon--production-capacity {
+  mask-position: -189px -6px;
+}
+
+.icon-production-category {
+  mask-position: -240px -6px;
+}
+
+.icon-production-system {
+  mask-position: -266px -6px;
+}
+
+.icon--bottom {
+  mask-image: url(@/assets/icons/icon.svg);
+  mask-position: -140px -16px;
+  width: 20px;
+  height: 20px;
+  background-color: #9ca3af;
+}
+
+/* Icon work-shift-header  */
+.icon--add {
+  mask-position: -80px -1px;
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff;
+}
+
+/* Icon work-shift-toolbar */
+.icon--search {
+  mask-position: 0px 0px;
+  height: 16px;
+  width: 16px;
+}
+
+.icon--reload {
+  mask-position: -112px 0px;
+  height: 16px;
+  width: 16px;
+}
+
+/* Icon pagination */
+.icon--first {
+  mask-position: -143px 0px;
+}
+.icon--left {
+  mask-position: -48px 0px;
+}
+.icon--right {
+  mask-position: -64px 0px;
+}
+.icon--last {
+  mask-position: -160px 0px;
+}
+
+/* Icon modal */
+.icon--help {
+  mask-position: -279px -16px;
+  height: 20px;
+  width: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  position: relative;
+}
+.icon--close {
+  mask-position: -299px -16px;
+  height: 20px;
+  width: 20px;
+  min-height: 20px;
+  min-width: 20px;
+  position: relative;
+}
+
+.icon--clock {
+  mask-position: -385px -1px;
+  height: 16px;
+  width: 16px;
+}
+
+/* ICON MENU ACTION TABLE */
+.icon--duplicate {
+  mask-position: -224px 0px;
+}
+.icon--stop-use {
+  mask-position: -176px 0px;
+}
+.icon--active {
+  mask-position: -192px 0px;
+}
+.icon--trash {
+  mask-position: -208px 0px;
+  background-color: #dc2626;
+}

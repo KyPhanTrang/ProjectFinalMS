@@ -1,0 +1,36 @@
+/* base.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+input,
+select,
+button,
+textarea {
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+}
+
+input {
+  color: #111827;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+button,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+}
