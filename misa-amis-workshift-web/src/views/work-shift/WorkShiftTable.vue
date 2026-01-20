@@ -8,6 +8,7 @@
       @delete="onDelete"
       @change-status="onChangeStatus"
       @duplicate="onDuplicate"
+      @open-filter="onOpenFilter"
     >
       <template #select="{ row }">
         <label class="checkbox">
@@ -101,6 +102,7 @@ const emit = defineEmits([
   'change-status',
   'page-change',
   'page-size-change',
+  'open-filter',
 ]);
 
 /**
@@ -172,6 +174,10 @@ function onDuplicate(row) {
 
 function onChangeStatus(row) {
   emit('change-status', row);
+}
+
+function onOpenFilter(payload) {
+  emit('open-filter', payload);
 }
 </script>
 

@@ -1,7 +1,7 @@
-import { ref, reactive, watch } from 'vue'
+import { ref, reactive, watch, computed } from 'vue'
 import WorkShiftsAPI from '@/apis/components/work-shifts/WorkShiftsAPI'
 import { validateWorkShift } from '@/utils/validators/workShift.validator'
-import { calcBreakingTime, calcWorkingTime, toTimeSpan } from '@/utils/time.util'
+import { calcBreakingTime, calcWorkingTime, toTimeSpan, round2 } from '@/utils/time.util'
 
 /**
  * Composition function quản lý nghiệp vụ Ca làm việc (Work Shift)
@@ -118,50 +118,44 @@ export function useWorkShift() {
      *  TỰ ĐỘNG TÍNH THỜI GIAN 
      */
 
-    /**
-     * Theo dõi thay đổi các mốc thời gian:
-     * - startTime
-     * - endTime
-     * - breakStartTime
-     * - breakEndTime
-     *
-     * Mỗi khi thay đổi → tự động:
-     * - Tính tổng thời gian ca
-     * - Tính tổng thời gian nghỉ
-     * - Cập nhật thời gian làm việc thực tế
-     *
-     * Hỗ trợ ca làm việc qua ngày
-     */
-    watch(
-        () => [
-            form.startTime,
-            form.endTime,
+    // Tính thời gian nghỉ của ca làm việc dựa trên giờ bắt đầu/kết thúc và giờ nghỉ
+    const computedBreakingTime = computed(() => {
+        // Chưa đủ dữ liệu (chưa chọn giờ bắt đầu hoặc kết thúc ca)
+        // → chưa thể tính thời gian nghỉ
+        if (!form.startTime || !form.endTime) return null
+
+        // Tính tổng thời gian nghỉ trong ca
+        return calcBreakingTime(
             form.breakStartTime,
-            form.breakEndTime
-        ],
-        () => {
-            // Chưa đủ dữ liệu để tính
-            if (!form.startTime || !form.endTime) {
-                form.workingTime = null
-                form.breakingTime = null
-                return
-            }
+            form.breakEndTime,
+            form.startTime
+        )
+    })
 
-            // Tổng thời gian ca (giờ)
-            const total = calcWorkingTime(form.startTime, form.endTime)
 
-            // Tổng thời gian nghỉ (giờ)
-            const breaking = calcBreakingTime(
-                form.breakStartTime,
-                form.breakEndTime,
-                form.startTime
-            )
 
+    // Tính thời gian làm việc thực tế của ca (tổng ca - thời gian nghỉ)
+    const computedWorkingTime = computed(() => {
+        // Chưa đủ dữ liệu để tính thời gian làm việc
+        if (!form.startTime || !form.endTime) return null
+
+        // Tổng thời gian ca làm việc
+        const total = calcWorkingTime(form.startTime, form.endTime)
+
+        // Thời gian làm việc thực tế = tổng ca - thời gian nghỉ
+        // Nếu chưa có thời gian nghỉ thì coi như 0
+        return round2(total - (computedBreakingTime.value ?? 0))
+    })
+
+    // Theo dõi thay đổi, nếu có (computedWorkingTime, computedBreakingTime) => gán lại cho form
+    watch(
+        [computedWorkingTime, computedBreakingTime],
+        ([working, breaking]) => {
+            form.workingTime = working
             form.breakingTime = breaking
-            form.workingTime = total - breaking
-        }
+        },
+        { immediate: true }
     )
-
 
     /**
      *  CRUD 

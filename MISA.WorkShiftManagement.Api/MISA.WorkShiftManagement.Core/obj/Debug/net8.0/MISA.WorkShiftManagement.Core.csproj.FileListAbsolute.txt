@@ -10,3 +10,4 @@ C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagem
 C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Core\obj\Debug\net8.0\MISA.WorkShiftManagement.Core.pdb
 C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Core\obj\Debug\net8.0\ref\MISA.WorkShiftManagement.Core.dll
 C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Core\obj\Debug\net8.0\MISA.WorkShiftManagement.Core.csproj.AssemblyReference.cache
+C:\Users\admin\OneDrive\Documents\MISA.WorkShiftManagement\MISA.WorkShiftManagement.Api\MISA.WorkShiftManagement.Core\obj\Debug\net8.0\MISA.WorkShiftManagement.Core.sourcelink.json

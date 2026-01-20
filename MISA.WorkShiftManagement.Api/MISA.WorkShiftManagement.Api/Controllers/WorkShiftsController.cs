@@ -121,5 +121,37 @@ namespace MISA.WorkShiftManagement.Api.Controllers
 
             return Ok(isExists);
         }
+
+        /// <summary>
+        /// Ngừng sử dụng nhiều ca làm việc
+        /// </summary>
+        /// <param name="ids">Danh sách Id ca làm việc</param>
+        /// <returns>Số lượng ca làm việc đã bị ngừng sử dụng</returns>
+        /// CreatedBy: THPHU (20/01/2026)
+        [HttpPut("disable")]
+        public async Task<IActionResult> DisableWorkShifts([FromBody] IEnumerable<Guid> ids)
+        {
+            if (ids == null || !ids.Any())
+                return BadRequest("Danh sách Id ca làm việc không được rỗng.");
+
+            var result = await _workShiftRepo.DisableWorkShiftsAsync(ids);
+            return Ok(new { affectedRows = result });
+        }
+
+        /// <summary>
+        /// Kích hoạt lại nhiều ca làm việc
+        /// </summary>
+        /// <param name="ids">Danh sách Id ca làm việc</param>
+        /// <returns>Số lượng ca làm việc đã được kích hoạt</returns>
+        /// CreatedBy: THPHU (20/01/2026)
+        [HttpPut("enable")]
+        public async Task<IActionResult> EnableWorkShifts([FromBody] IEnumerable<Guid> ids)
+        {
+            if (ids == null || !ids.Any())
+                return BadRequest("Danh sách Id ca làm việc không được rỗng.");
+
+            var result = await _workShiftRepo.EnableWorkShiftsAsync(ids);
+            return Ok(new { affectedRows = result });
+        }
     }
 }

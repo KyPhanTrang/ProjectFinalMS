@@ -235,3 +235,10 @@
   mask-position: -208px 0px;
   background-color: #dc2626;
 }
+
+.icon--filter {
+  mask-position: -544px 0px;
+  height: 16px;
+  width: 16px;
+  background-color: #f3f4f6;
+}

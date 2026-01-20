@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MISA.WorkShiftManagement.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e97d5f582a4415cc3ba7c67133f39800bf2e616c")]
 [assembly: System.Reflection.AssemblyProductAttribute("MISA.WorkShiftManagement.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MISA.WorkShiftManagement.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

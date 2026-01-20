@@ -24,30 +24,29 @@
           </div>
         </div>
       </div>
-
-      <!-- Bottom area
-      <div class="sidebar__footer">
-        <div class="sidebar__collapse-btn" @click="toggleSidebar">
-          <div
-            class="sidebar__icon icon--sidebar icon--bottom"
-            :class="{ 'icon--rotate': collapsed }"
-          ></div>
-          <div class="sidebar__text footer-text-bottom" title="Thu gọn" v-show="!collapsed">
-            Thu gọn
-          </div>
-        </div>
-      </div> -->
     </nav>
   </aside>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 // import { useRoute } from 'vue-router';
 import SidebarItem from '@/components/ms-sidebar/SidebarItem.vue';
 import SidebarGroup from '@/components/ms-sidebar/SidebarGroup.vue';
 import { SIDEBAR_MENU } from '@/utils/constants';
 
+onMounted(() => {
+  const saved = localStorage.getItem('sidebar-collapsed');
+
+  if (saved !== null) {
+    collapsed.value = JSON.parse(saved);
+  }
+});
+
+/**
+ * Render ra type của item thuộc sidebar
+ * @param item (có 2 kiểu) - 1 Group "có dropdown", 2 Item không có dropdown
+ */
 const resolveComponent = (item) => {
   return item.type === 'group' ? SidebarGroup : SidebarItem;
 };
@@ -57,6 +56,8 @@ const resolveComponent = (item) => {
 const collapsed = ref(false);
 const toggleSidebar = () => {
   collapsed.value = !collapsed.value;
+  // Lưu trạng thái vào localStorage
+  localStorage.setItem('sidebar-collapsed', JSON.stringify(collapsed.value));
 };
 </script>
 

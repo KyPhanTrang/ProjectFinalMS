@@ -60,39 +60,10 @@ const open = ref(false);
 // Ref gốc của component (dùng để detect click outside)
 const root = ref(null);
 
-const displayValue = computed({
-  // ===== GET =====
-  // Dùng để HIỂN THỊ lên input
-  // modelValue từ parent truyền xuống đang có dạng: HH:mm:ss
-  // → UI chỉ cần HH:mm nên cắt 5 ký tự đầu
-  get() {
-    // Trường hợp chưa có dữ liệu (null / undefined / '')
-    // → input hiển thị rỗng
-    if (!props.modelValue) return '';
-
-    // Ví dụ:
-    // props.modelValue = '18:17:00'
-    // return '18:17'
-    return props.modelValue.slice(0, 5);
-  },
-
-  // ===== SET =====
-  // Dùng khi USER NHẬP hoặc CHỌN GIỜ trên UI
-  // Giá trị val nhận được luôn ở dạng HH:mm
-  // → chuẩn hóa lại về HH:mm:ss trước khi emit cho parent
-  set(val) {
-    // Nếu input bị clear
-    // → trả về rỗng cho form cha
-    if (!val) {
-      emit('update:modelValue', '');
-      return;
-    }
-
-    // Ví dụ:
-    // val = '08:30'
-    // emit lên parent = '08:30:00'
-    emit('update:modelValue', `${val}:00`);
-  },
+// Truyền lên (HH:mm:ss) => hiển thị (HH:mm) => Gửi đi (HH:mm)
+const displayValue = computed(() => {
+  if (!props.modelValue) return '';
+  return props.modelValue.slice(0, 5);
 });
 
 /**
@@ -132,6 +103,7 @@ function select(t) {
  *
  * @param {Event} e - Input event
  */
+
 function onInput(e) {
   // Lấy toàn bộ số người dùng nhập
   let raw = e.target.value.replace(/\D/g, '');
@@ -145,7 +117,7 @@ function onInput(e) {
       if (digit > '2') break;
       result += digit;
     }
-    // H2: chữ số thứ 2 của giờ
+    // H2: chữ số thứ 2 của giờ (20->23) range(0-3)
     else if (i === 1) {
       if (result[0] === '2' && digit > '3') break;
       result += digit;

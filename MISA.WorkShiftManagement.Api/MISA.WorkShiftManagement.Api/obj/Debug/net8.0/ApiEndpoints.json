@@ -102,6 +102,38 @@
   },
   {
     "ContainingType": "MISA.WorkShiftManagement.Api.Controllers.WorkShiftsController",
+    "Method": "DisableWorkShifts",
+    "RelativePath": "api/WorkShifts/disable",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ids",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MISA.WorkShiftManagement.Api.Controllers.WorkShiftsController",
+    "Method": "EnableWorkShifts",
+    "RelativePath": "api/WorkShifts/enable",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ids",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.Guid, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MISA.WorkShiftManagement.Api.Controllers.WorkShiftsController",
     "Method": "GetAllPaging",
     "RelativePath": "api/WorkShifts/paging",
     "HttpMethod": "GET",

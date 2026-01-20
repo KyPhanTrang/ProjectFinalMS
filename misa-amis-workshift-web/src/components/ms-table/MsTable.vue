@@ -19,8 +19,18 @@
               </label>
             </template>
             <template v-else>
-              {{ field.label }}
+              <div class="table-header__field">
+                <div class="table-header__label">
+                  {{ field.label }}
+                </div>
+                <div
+                  v-if="field.filterable"
+                  class="table-header__filter-icon icon--mask icon--filter"
+                  @click.stop="onClickOpenFilter(field, $event)"
+                ></div>
+              </div>
             </template>
+
             <div class="ms-resize"></div>
           </th>
           <th class="th-action"></th>
@@ -143,7 +153,7 @@ const props = defineProps({
  * - Emit khi người dùng click vào nút ngừng sử dụng trên 1 dòng
  * - Payload là object row tương ứng (và có isActive là false)
  */
-const emit = defineEmits(['edit', 'delete', 'duplicate', 'change-status']);
+const emit = defineEmits(['edit', 'delete', 'duplicate', 'change-status', 'open-filter']);
 
 // Xử lý tắt
 const handleClickOutside = (e) => {
@@ -248,6 +258,18 @@ function onClickDelete(row) {
   closeMenu();
 }
 
+function onClickOpenFilter(field, event) {
+  const rect = event.currentTarget.getBoundingClientRect();
+
+  emit('open-filter', {
+    field,
+    position: {
+      top: rect.bottom + 6,
+      left: rect.left,
+    },
+  });
+}
+
 /**
  * Trả về class căn chỉnh nội dung của cột
  *
@@ -314,6 +336,19 @@ function getColumnStyle(field) {
 
 table {
   table-layout: fixed;
+}
+
+/* Table header field */
+.table-header__field {
+  display: flex;
+  align-items: center;
+}
+.table-header__label {
+  flex: 1;
+}
+.table-header__filter-icon:hover {
+  background-color: #4b5563;
+  cursor: pointer;
 }
 
 /* td sticky */

@@ -33,5 +33,25 @@ namespace MISA.WorkShiftManagement.Core.Interfaces.Repositories
         /// <returns>True - mã đã tồn tại, false - mã hợp lệ</returns>
         /// CreatedBy: THPHU (09/01/2026)
         Task<bool> CheckShiftCodeExistsAsync(string shiftCode, Guid? shiftId);
+
+        /// <summary>
+        /// Ngừng sử dụng nhiều ca làm việc
+        /// </summary>
+        /// <param name="ids">Danh sách Id ca làm việc</param>
+        /// <returns>
+        /// Số lượng ca làm việc đã được ngừng sử dụng
+        /// </returns>
+        /// CreatedBy: THPHU (20/01/2026)
+        Task<int> DisableWorkShiftsAsync(IEnumerable<Guid> ids);
+
+        /// <summary>
+        /// Kích hoạt lại nhiều ca làm việc
+        /// </summary>
+        /// <param name="ids">Danh sách Id ca làm việc</param>
+        /// <returns>
+        /// Số lượng ca làm việc đã được kích hoạt
+        /// </returns>
+        /// CreatedBy: THPHU (20/01/2026)
+        Task<int> EnableWorkShiftsAsync(IEnumerable<Guid> ids);
     }
 }

@@ -4,7 +4,22 @@
     <work-shift-header @open="openFormCreate"></work-shift-header>
     <section class="work-shift__content">
       <!-- Toolbar -->
-      <work-shift-toolbar @search="handleSearch" @reload="handleReload"></work-shift-toolbar>
+      <work-shift-toolbar
+        :chips="filterChips"
+        @remove-filter-by-id="removeFilterById"
+        @clear-filter="clearAllFilter"
+        @search="handleSearch"
+        @reload="handleReload"
+      ></work-shift-toolbar>
+      <!-- Filter box -->
+      <filter-popup
+        v-if="showFilter"
+        :field="filterField"
+        :filter="filter"
+        :position="filterPosition"
+        @apply="applyFilter"
+        @close="showFilter = false"
+      />
       <!-- Table -->
       <work-shift-table
         :fields="fields"
@@ -19,6 +34,7 @@
         @delete="handleDelete"
         @duplicate="handleDuplicate"
         @change-status="handleChangeStatus"
+        @open-filter="openFilter"
       ></work-shift-table>
     </section>
     <!-- Form -->
@@ -48,12 +64,13 @@
 <script setup>
 import WorkShiftHeader from './WorkShiftHeader.vue';
 import WorkShiftToolbar from './WorkShiftToolbar.vue';
+import FilterPopup from '@/components/ms-filter-popup/FilterPopup.vue';
 import WorkShiftTable from './WorkShiftTable.vue';
 import WorkShiftForm from './WorkShiftForm.vue';
 import BaseMsgBox from '@/components/ms-msg-box/BaseMsgBox.vue';
 import MsToast from '@/components/ms-toast/MsToast.vue';
 
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { workShiftFields } from './workShift.fields';
 import { useWorkShift } from '@/composables/useWorkShift';
 import { useMsgBox } from '@/composables/useMsgBox';
@@ -81,10 +98,6 @@ const {
   resetForm,
 } = useWorkShift();
 
-function changePageSize(value) {
-  filter.pageSize = value;
-}
-
 const { msgBox, showAlert, showConfirm, close, confirm } = useMsgBox();
 
 const { isToast, msgToast, show: showToast, closeToast } = useToast();
@@ -102,6 +115,139 @@ const editingId = ref(null);
 onMounted(() => {
   getPaging();
 });
+
+/**
+ * Paging
+ */
+
+// PageSize change
+function changePageSize(value) {
+  filter.pageSize = value;
+}
+
+/**
+ * WorkShift Filter Handler
+ */
+
+/**
+ * Filter Popup
+ *
+ */
+
+// Biến điều khiển popup filter
+const showFilter = ref(false); // true → hiển thị popup filter
+const filterField = ref(null); // field đang filter (ví dụ "isActive", "keyword")
+const filterPosition = ref({}); // vị trí hiển thị popup (top/left) cho UI
+
+/**
+ * Mở popup filter
+ * @param {Object} param0 - field + position
+ */
+function openFilter({ field, position }) {
+  filterField.value = field;
+  filterPosition.value = position;
+  showFilter.value = true;
+}
+
+/**
+ * Áp dụng filter
+ * @param {Object} payload - { keyword, isActive, workingTime }
+ */
+function applyFilter(payload) {
+  Object.assign(filter, {
+    isActive: payload.isActive,
+    keyword: payload.keyword,
+    workingTime: payload.workingTime,
+  });
+  filter.pageIndex = 1; // luôn reset pageIndex khi filter thay đổi
+  showFilter.value = false;
+  getPaging(); // gọi API với filter mới
+}
+
+// Filter Chips
+
+/**
+ * Danh sách chips filter đang được áp dụng
+ * Computed này dùng để hiển thị chip trên UI
+ */
+const filterChips = computed(() => {
+  const chips = [];
+
+  if (filter.keyword !== null) {
+    chips.push({
+      key: 'keyword',
+      label: 'Tìm kiếm nhanh',
+      value: filter.keyword,
+    });
+  }
+
+  if (filter.isActive !== null) {
+    chips.push({
+      key: 'isActive',
+      label: 'Trạng thái',
+      value: filter.isActive ? 'Đang sử dụng' : 'Ngừng sử dụng',
+    });
+  }
+
+  if (filter.workingTime !== null) {
+    chips.push({
+      key: 'workingTime',
+      label: 'Thời gian làm việc',
+      value: `${filter.workingTime} giờ`,
+    });
+  }
+
+  return chips;
+});
+
+/**
+ * Xóa chip filter đơn lẻ
+ * @param {string} key - key của filter muốn xóa
+ */
+function removeFilterById(key) {
+  filter[key] = null;
+  filter.pageIndex = 1;
+  getPaging();
+}
+
+/**
+ * Xóa tất cả filter
+ */
+function clearAllFilter() {
+  filter.isActive = null;
+  filter.workingTime = null;
+  filter.keyword = null;
+  filter.pageIndex = 1;
+  getPaging();
+}
+
+//  Search Input
+
+/**
+ * Xử lý search keyword
+ * @param {string} keyword
+ */
+function handleSearch(keyword) {
+  filter.keyword = keyword;
+  filter.pageIndex = 1;
+  getPaging();
+}
+
+// Reload
+
+/**
+ * Reload lại form filter + reset dữ liệu
+ */
+function handleReload() {
+  Object.assign(fields, {
+    // reset UI filter fields
+    isActive: null,
+    keyword: null,
+    workingTime: null,
+  });
+  filter.pageIndex = 1; // reset page
+  getPaging(); // gọi API
+}
 
 /**
  * ACTION (CREATE, EDIT, REMOVE) FORM
@@ -258,22 +404,6 @@ async function handleChangeStatus(row) {
     showToast('Cập nhật thất bại', 5000);
   }
 }
-
-// Handle Search
-function handleSearch(keyword) {
-  filter.keyword = keyword;
-  filter.pageIndex = 1;
-  getPaging();
-}
-
-// Handle Reload
-function handleReload() {
-  filter.keyword = '';
-  filter.pageIndex = 1;
-  getPaging();
-}
-
-// Handle Reload
 </script>
 
 <style scoped>

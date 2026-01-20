@@ -65,7 +65,7 @@ export function calcBreakingTime(breakStart, breakEnd, startTime) {
 }
 
 // Làm tròn sau thập phân hai chữ số
-function round2(value) {
+export function round2(value) {
     return Math.round((value + Number.EPSILON) * 100) / 100
 }
 
@@ -89,8 +89,22 @@ export function toTimeSpan(time) {
     // Không có giá trị → không gửi backend
     if (!time) return null
 
+    // Trường hợp chỉ có 1 số (1, 2, ... ,9)
+    if (time.length === 1) {
+        time = `0${time[0]}:00`;
+    }
+    // Trường hợp có 2 số (00, 01, 02, ..., 23)
+    if (time.length === 2) {
+        time = `${time}:00`;
+    }
+    // Trường hợp có 3 số (00:1, 23:4) => (00:01, 23:04)
+    if (time.length === 4) {
+        time = `${time[0]}${time[1]}${time[2]}0${time[3]}`;
+    }
+
     // Trường hợp chỉ có giờ và phút (HH:mm) → thêm giây
-    if (/^\d{2}:\d{2}$/.test(time)) {
+    const lengthOfTime = time.split(':').length
+    if (lengthOfTime == 2) {
         return `${time}:00`
     }
 

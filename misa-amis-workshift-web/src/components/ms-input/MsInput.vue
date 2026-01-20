@@ -88,5 +88,6 @@ defineExpose({
 
 .text-align-right {
   text-align: right;
+  color: #4b5563;
 }
 </style>

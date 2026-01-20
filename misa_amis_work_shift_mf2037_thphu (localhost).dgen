@@ -109,7 +109,7 @@
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <UseDefault>false</UseDefault>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <ValueDistributionMode>Random</ValueDistributionMode>
             <SeedValue>1</SeedValue>
             <SequentialValueTicks>10000000</SequentialValueTicks>
             <OffsetFromColumnMaxTimeTicks>36000000000</OffsetFromColumnMaxTimeTicks>
@@ -123,7 +123,7 @@
             <MaxFraction>0</MaxFraction>
             <MaxAllowedFraction>0</MaxAllowedFraction>
             <IsRandomizeFraction>true</IsRandomizeFraction>
-            <MaxTime>828000000000</MaxTime>
+            <MaxTime>252000000000</MaxTime>
             <MinTime>0</MinTime>
             <Scale>0</Scale>
             <Precision>0</Precision>
@@ -142,8 +142,8 @@
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <UseDefault>false</UseDefault>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>2</SeedValue>
+            <ValueDistributionMode>Random</ValueDistributionMode>
+            <SeedValue>6</SeedValue>
             <SequentialValueTicks>10000000</SequentialValueTicks>
             <OffsetFromColumnMaxTimeTicks>36000000000</OffsetFromColumnMaxTimeTicks>
             <OffsetFromColumnMinTimeTicks>0</OffsetFromColumnMinTimeTicks>
@@ -171,7 +171,7 @@
           <DataType>TIME</DataType>
           <GeneratorOptions xsi:type="MySqlTimeGeneratorOptions">
             <AllowNulls>true</AllowNulls>
-            <NullProportion>10</NullProportion>
+            <NullProportion>100</NullProportion>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <UseDefault>false</UseDefault>
@@ -189,8 +189,8 @@
             <MaxFraction>0</MaxFraction>
             <MaxAllowedFraction>0</MaxAllowedFraction>
             <IsRandomizeFraction>true</IsRandomizeFraction>
-            <MaxTime>863990000000</MaxTime>
-            <MinTime>10000000</MinTime>
+            <MaxTime>539990000000</MaxTime>
+            <MinTime>252010000000</MinTime>
             <Scale>0</Scale>
             <Precision>0</Precision>
           </GeneratorOptions>
@@ -204,7 +204,7 @@
           <DataType>TIME</DataType>
           <GeneratorOptions xsi:type="MySqlTimeGeneratorOptions">
             <AllowNulls>true</AllowNulls>
-            <NullProportion>10</NullProportion>
+            <NullProportion>100</NullProportion>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <UseDefault>false</UseDefault>
@@ -222,8 +222,8 @@
             <MaxFraction>0</MaxFraction>
             <MaxAllowedFraction>0</MaxAllowedFraction>
             <IsRandomizeFraction>true</IsRandomizeFraction>
-            <MaxTime>863990000000</MaxTime>
-            <MinTime>10000000</MinTime>
+            <MaxTime>792000000000</MaxTime>
+            <MinTime>504010000000</MinTime>
             <Scale>0</Scale>
             <Precision>0</Precision>
           </GeneratorOptions>
@@ -241,10 +241,10 @@
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Increment xsi:type="xsd:decimal">1</Increment>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>1</SeedValue>
-            <MinValue>0</MinValue>
-            <MaxValue>16</MaxValue>
+            <ValueDistributionMode>Random</ValueDistributionMode>
+            <SeedValue>0</SeedValue>
+            <MinValue>4</MinValue>
+            <MaxValue>12</MaxValue>
             <UseDefault>false</UseDefault>
           </GeneratorOptions>
           <GeneratorType>MySqlDecimalGenerator</GeneratorType>
@@ -258,15 +258,15 @@
           <Checked>true</Checked>
           <DataType>DECIMAL</DataType>
           <GeneratorOptions xsi:type="DecimalGeneratorOptions">
-            <AllowNulls>true</AllowNulls>
-            <NullProportion>10</NullProportion>
+            <AllowNulls>false</AllowNulls>
+            <NullProportion>6</NullProportion>
             <Unique>false</Unique>
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Increment xsi:type="xsd:decimal">1</Increment>
-            <ValueDistributionMode>Seed</ValueDistributionMode>
+            <ValueDistributionMode>Random</ValueDistributionMode>
             <SeedValue>2</SeedValue>
-            <MinValue>0</MinValue>
-            <MaxValue>8</MaxValue>
+            <MinValue>4</MinValue>
+            <MaxValue>6</MaxValue>
             <UseDefault>false</UseDefault>
             <DefaultValue>NULL</DefaultValue>
           </GeneratorOptions>
@@ -287,7 +287,7 @@
             <IsAlwaysUnique>false</IsAlwaysUnique>
             <Increment xsi:type="xsd:int">1</Increment>
             <ValueDistributionMode>Seed</ValueDistributionMode>
-            <SeedValue>1</SeedValue>
+            <SeedValue>0</SeedValue>
             <MinValue>0</MinValue>
             <MaxValue>1</MaxValue>
             <UseDefault>false</UseDefault>

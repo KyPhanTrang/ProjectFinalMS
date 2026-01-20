@@ -16,6 +16,25 @@
           </div>
         </div>
       </div>
+      <!-- Chips -->
+      <div
+        class="filter-chips"
+        v-if="chips.length"
+        title="Tìm trong: mã, tên, người tạo, người sửa"
+      >
+        <div class="filter-chip" v-for="chip in chips" :key="chip.key">
+          <div class="chip-text">
+            {{ chip.label }}:
+            <b>{{ chip.value }}</b>
+          </div>
+          <div
+            class="chip-remove icon--mask icon--close"
+            @click="removeFilterByKey(chip.key)"
+          ></div>
+        </div>
+
+        <div class="clear-filter-label" @click="clearAllFilter">Bỏ lọc</div>
+      </div>
     </div>
 
     <!-- Right: actions -->
@@ -29,21 +48,51 @@
 
 <script setup>
 import { ref } from 'vue';
-
 /**
  * EMIT
  */
-const emit = defineEmits(['reload', 'search']);
+const emit = defineEmits(['reload', 'search', 'remove-filter-by-id', 'clear-filter']);
 const keyword = ref('');
 
-// Action
+/**
+ * PROPS
+ */
+defineProps({
+  chips: Array,
+});
+
+/**
+ * Gửi sự kiện search mỗi khi input thay đổi
+ */
 function onSearch() {
   emit('search', keyword.value);
 }
 
+/**
+ * Reload / reset toolbar
+ * - Xóa search input
+ * - Emit reload event
+ */
 function onReload() {
-  keyword.value = '';
+  keyword.value = null;
   emit('reload');
+}
+
+/**
+ * Xóa 1 chip filter
+ * @param {string} key - key của chip (key: 'keyword', 'isActive', 'workingTime')
+ */
+function removeFilterByKey(key) {
+  if (key === 'keyword') keyword.value = null;
+  emit('remove-filter-by-id', key);
+}
+
+/**
+ * Xóa tất cả filter
+ */
+function clearAllFilter() {
+  keyword.value = null;
+  emit('clear-filter');
 }
 </script>
 
@@ -96,6 +145,39 @@ function onReload() {
 
 .search-input {
   width: 100%;
+}
+
+.filter-chips {
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-chip {
+  display: flex;
+  gap: 8px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 4px;
+  position: relative;
+  margin-right: 8px;
+  white-space: normal;
+  align-items: center;
+  background-color: #f3f4f6;
+}
+
+.chip-text {
+  white-space: nowrap;
+}
+
+.chip-remove {
+  cursor: pointer;
+}
+
+.clear-filter-label {
+  color: #f06666;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .work-shift-toolbar__button {

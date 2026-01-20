@@ -1,6 +1,13 @@
 <!-- ================= ShiftForm.vue ================= -->
 <template>
-  <div class="wrapper-modal">
+  <div
+    class="wrapper-modal"
+    ref="modalRef"
+    tabindex="-1"
+    @keydown.enter.prevent="$emit('form-submit')"
+    @keydown.esc="$emit('close')"
+    @keydown.ctrl.s.prevent="$emit('form-submit')"
+  >
     <div class="modal">
       <div class="modal__header">
         <div class="title">{{ mode == 'create' ? 'Thêm Ca ' : 'Sửa Ca ' }}làm việc</div>
@@ -107,9 +114,9 @@
       </div>
 
       <div class="modal__footer">
-        <button class="btn" @click="$emit('close')">Hủy</button>
+        <button class="btn btn-close" @click="$emit('close')">Hủy</button>
         <button class="btn">Lưu và Thêm</button>
-        <button class="btn primary" @click="$emit('form-submit')">Lưu</button>
+        <button class="btn btn-primary" @click="$emit('form-submit')">Lưu</button>
       </div>
     </div>
   </div>
@@ -125,7 +132,7 @@ import MsTimeSelect from '@/components/ms-input/MsTimeSelect.vue';
  * Auto focus
  */
 const shiftCodeRef = ref(null);
-
+const modalRef = ref(null);
 onMounted(async () => {
   await nextTick();
   shiftCodeRef.value?.focus();
@@ -282,13 +289,22 @@ defineProps({
   padding: 6px 12px;
   border-radius: 4px;
   border: 1px solid #d1d5db;
-  background: #fff;
+  background-color: #fff;
   color: #111827;
   font-weight: 500;
 }
-.btn.primary {
+.btn:hover {
+  background-color: #e0e0e098;
+}
+.btn.btn-primary {
   background: #16a34a;
   color: #fff;
   border-color: #16a34a;
+}
+
+.btn.btn-primary:hover {
+  background: #0a4e23ee;
+  color: #fff;
+  border-color: #0a4e23ee;
 }
 </style>

@@ -74,6 +74,64 @@ namespace MISA.WorkShiftManagement.Infrastructure.Repositories
             }
         }
 
+        public async Task<int> DisableWorkShiftsAsync(IEnumerable<Guid> ids)
+        {
+            // Nếu danh sách id rỗng thì trả về 0
+            if (ids == null || !ids.Any())
+            {
+                return 0;
+            }
+
+            // Câu lệnh SQL ngừng sử dụng nhiều ca làm việc
+            var sqlDisable = "UPDATE work_shift SET is_active = 0 WHERE shift_id IN @Ids";
+
+            // Khai báo tham số
+            var parameters = new { Ids = ids };
+
+            try
+            {
+                // Kết nối đến database và thực hiện truy vấn
+                using (var mySqlConnection = CreateConnection())
+                {
+                    var result = await mySqlConnection.ExecuteAsync(sqlDisable, parameters);
+                    return result;
+                }
+            }
+            catch (DataAccessException ex)
+            {
+                throw new DataAccessException("Lỗi truy cập dữ liệu khi ngừng sử dụng danh sách ca làm việc.", ex);
+            }
+        }
+
+        public async Task<int> EnableWorkShiftsAsync(IEnumerable<Guid> ids)
+        {
+            // Nếu danh sách id rỗng thì trả về 0
+            if (ids == null || !ids.Any())
+            {
+                return 0;
+            }
+
+            // Câu lệnh SQL kích hoạt nhiều ca làm việc
+            var sqlEnable = "UPDATE work_shift SET is_active = 1 WHERE shift_id IN @Ids";
+
+            // Khai báo tham số
+            var parameters = new { Ids = ids };
+
+            try
+            {
+                // Kết nối đến database và thực hiện truy vấn
+                using (var mySqlConnection = CreateConnection())
+                {
+                    var result = await mySqlConnection.ExecuteAsync(sqlEnable, parameters);
+                    return result;
+                }
+            }
+            catch (DataAccessException ex)
+            {
+                throw new DataAccessException("Lỗi truy cập dữ liệu khi kích hoạt danh sách ca làm việc.", ex);
+            }
+        }
+
         public async Task<PagingResult<WorkShift>> GetAllPaging(WorkShiftFilter filter)
         {
             try
